@@ -1,3 +1,3 @@
 class AssetsData {
-  static const loge = 'assets/BOOKLY.png';
+  static const logo = 'assets/BOOKLY.png';
 }
