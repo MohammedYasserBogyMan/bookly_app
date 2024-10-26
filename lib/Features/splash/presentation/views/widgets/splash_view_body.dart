@@ -1,5 +1,8 @@
+import 'package:bookl_app/Features/home/presention/view/home_view.dart';
+import 'package:bookl_app/const.dart';
 import 'package:bookl_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'slideing_text.dart';
 
@@ -19,16 +22,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
 
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
-    slideingAnimation =
-        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
-            .animate(animationController);
+    initeSlidingAnimation();
 
-    // تشغيل الـ AnimationController
-    animationController.forward();
+    navigateToHome();
   }
 
   @override
@@ -48,5 +44,28 @@ class _SplashViewBodyState extends State<SplashViewBody>
         SlideingText(slideingAnimation: slideingAnimation),
       ],
     );
+  }
+
+  void initeSlidingAnimation() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+    slideingAnimation =
+        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
+            .animate(animationController);
+
+    // تشغيل الـ AnimationController
+    animationController.forward();
+  }
+
+  void navigateToHome() {
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.to(
+        () => const HomeView(),
+        transition: Transition.fadeIn,
+        duration: kTranstionDuration,
+      );
+    });
   }
 }
