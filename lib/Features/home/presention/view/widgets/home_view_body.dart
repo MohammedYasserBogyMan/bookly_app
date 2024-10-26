@@ -1,4 +1,4 @@
-import 'package:bookl_app/Features/home/presention/view/widgets/custom_list_view_item.dart';
+import 'package:bookl_app/Features/home/presention/view/widgets/feature_book_list_view.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_appbar.dart';
@@ -12,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
       child: Column(
         children: [
           CustomAppbar(),
-          CustomListViewItem(),
+          FeaturedBookListView(),
         ],
       ),
     );
