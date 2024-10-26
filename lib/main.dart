@@ -1,4 +1,5 @@
 import 'package:bookl_app/Features/splash/presentation/views/splash_view.dart';
+import 'package:bookl_app/const.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,9 +12,10 @@ class BooklyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
+      theme: ThemeData().copyWith(scaffoldBackgroundColor: kPraimaryColor),
       debugShowCheckedModeBanner: false,
-      home: SplashView(),
+      home: const SplashView(),
     );
   }
 }
