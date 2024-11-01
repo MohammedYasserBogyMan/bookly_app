@@ -1,5 +1,5 @@
+import 'package:bookl_app/Features/home/presention/view/widgets/best_seller_list_view.dart';
 import 'package:bookl_app/Features/home/presention/view/widgets/feature_book_list_view.dart';
-import 'package:bookl_app/core/utils/assets.dart';
 import 'package:bookl_app/core/utils/styels.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -25,33 +25,11 @@ class HomeViewBody extends StatelessWidget {
               'Best Seller',
               style: Styels.textStyle18,
             ),
+            SizedBox(
+              height: 20,
+            ),
             BestSellerListViewItem(),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 140,
-      child: AspectRatio(
-        aspectRatio: 2.7 / 4,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: const DecorationImage(
-              fit: BoxFit.fill,
-              image: NetworkImage(
-                AssetsData.imageTest,
-              ),
-            ),
-          ),
         ),
       ),
     );

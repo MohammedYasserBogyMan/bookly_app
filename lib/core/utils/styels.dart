@@ -20,11 +20,9 @@ abstract class Styels {
 
   static const textStyel16 = TextStyle(
     fontSize: 16,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w500,
   );
 
   static const textStyel14 = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.normal,
-  );
+      fontSize: 14, fontWeight: FontWeight.normal, color: Colors.grey);
 }
