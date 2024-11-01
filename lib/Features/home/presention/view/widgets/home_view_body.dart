@@ -1,4 +1,5 @@
 import 'package:bookl_app/Features/home/presention/view/widgets/feature_book_list_view.dart';
+import 'package:bookl_app/core/utils/assets.dart';
 import 'package:bookl_app/core/utils/styels.dart';
 import 'package:flutter/material.dart';
 
@@ -22,9 +23,35 @@ class HomeViewBody extends StatelessWidget {
             ),
             Text(
               'Best Seller',
-              style: Styels.titelMedium,
+              style: Styels.textStyle18,
             ),
+            BestSellerListViewItem(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class BestSellerListViewItem extends StatelessWidget {
+  const BestSellerListViewItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 140,
+      child: AspectRatio(
+        aspectRatio: 2.7 / 4,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            image: const DecorationImage(
+              fit: BoxFit.fill,
+              image: NetworkImage(
+                AssetsData.imageTest,
+              ),
+            ),
+          ),
         ),
       ),
     );
