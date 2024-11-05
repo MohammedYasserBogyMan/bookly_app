@@ -1,7 +1,6 @@
 import 'package:bookl_app/Features/home/presention/view/widgets/feature_book_list_view.dart';
 import 'package:bookl_app/core/utils/styels.dart';
 import 'package:flutter/material.dart';
-
 import 'best_seller_list_view.dart';
 import 'custom_appbar.dart';
 
@@ -35,12 +34,12 @@ class HomeViewBody extends StatelessWidget {
               ),
             ),
           ),
-          SliverFillRemaining(
+          SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: BestSellerListView(),
             ),
-          )
+          ),
         ],
       ),
     );
