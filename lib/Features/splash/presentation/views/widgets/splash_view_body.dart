@@ -1,8 +1,7 @@
-import 'package:bookl_app/Features/home/presention/view/home_view.dart';
-import 'package:bookl_app/const.dart';
+import 'package:bookl_app/core/utils/app_router.dart';
 import 'package:bookl_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import 'slideing_text.dart';
 
@@ -60,12 +59,17 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.to(
-        () => const HomeView(),
-        transition: Transition.fadeIn,
-        duration: kTranstionDuration,
-      );
-    });
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        // Get.to(
+        //   () => const HomeView(),
+        //   transition: Transition.fadeIn,
+        //   duration: kTranstionDuration,
+        // );
+        // ignore: use_build_context_synchronously
+        GoRouter.of(context).push(AppRouter.kHomeView);
+      },
+    );
   }
 }
