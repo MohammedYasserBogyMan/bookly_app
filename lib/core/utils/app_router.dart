@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
   static const kHomeView = '/homeView';
+  static const kBookDetailsView = '/bookDetailsView';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -17,7 +18,7 @@ abstract class AppRouter {
         builder: (context, state) => const HomeView(),
       ),
       GoRoute(
-        path: '/bookDetailsView',
+        path: kBookDetailsView,
         builder: (context, state) => const BookDetailsView(),
       ),
     ],
