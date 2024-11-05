@@ -1,5 +1,7 @@
 import 'package:bookl_app/Features/home/presention/view/widgets/book_action.dart';
 import 'package:bookl_app/Features/home/presention/view/widgets/custom_list_view_item.dart';
+import 'package:bookl_app/Features/home/presention/view/widgets/feature_book_list_view.dart';
+import 'package:bookl_app/Features/home/presention/view/widgets/similar_book_list_view.dart';
 import 'package:bookl_app/core/utils/styels.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +22,7 @@ class BookDetailsViewBody extends StatelessWidget {
           children: [
             const CustomAppBarBookDetails(),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: width * 0.16),
+              padding: EdgeInsets.symmetric(horizontal: width * 0.17),
               child: const FeaturedCustomListViewItem(),
             ),
             const SizedBox(
@@ -52,7 +54,23 @@ class BookDetailsViewBody extends StatelessWidget {
             const SizedBox(
               height: 37,
             ),
-            const BookAction()
+            const BookAction(),
+            const SizedBox(
+              height: 50,
+            ),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'You can also like',
+                style: Styels.textStyel16,
+              ),
+            ),
+            SizedBox(
+              height: 14,
+            ),
+            SizedBox(
+                height: MediaQuery.of(context).size.width * .3,
+                child: SimilarBooksListView()),
           ],
         ),
       ),
