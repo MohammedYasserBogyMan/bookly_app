@@ -1,6 +1,8 @@
 import 'package:bookl_app/Features/home/presention/view/widgets/custom_list_view_item.dart';
+import 'package:bookl_app/core/utils/styels.dart';
 import 'package:flutter/material.dart';
 
+import 'bool_rating.dart';
 import 'custom_appbar_book_details.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -20,6 +22,30 @@ class BookDetailsViewBody extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: width * 0.16),
               child: const FeaturedCustomListViewItem(),
             ),
+            const SizedBox(
+              height: 43,
+            ),
+            const Text(
+              'A Million To One',
+              style: Styels.textStyel30,
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            Opacity(
+              opacity: .7,
+              child: Text(
+                'Tony Faggioli',
+                style: Styels.textStyle18.copyWith(
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const BookRating(),
           ],
         ),
       ),
