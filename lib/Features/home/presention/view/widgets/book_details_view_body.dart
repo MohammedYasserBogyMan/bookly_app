@@ -1,3 +1,4 @@
+import 'package:bookl_app/Features/home/presention/view/widgets/book_action.dart';
 import 'package:bookl_app/Features/home/presention/view/widgets/custom_list_view_item.dart';
 import 'package:bookl_app/core/utils/styels.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,10 @@ class BookDetailsViewBody extends StatelessWidget {
             const BookRating(
               mainAxisAlignment: MainAxisAlignment.center,
             ),
+            const SizedBox(
+              height: 37,
+            ),
+            const BookAction()
           ],
         ),
       ),
