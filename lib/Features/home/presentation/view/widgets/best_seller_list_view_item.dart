@@ -1,4 +1,4 @@
-import 'package:bookl_app/Features/home/presention/view/widgets/bool_rating.dart';
+import 'package:bookl_app/Features/home/presentation/view/widgets/bool_rating.dart';
 import 'package:bookl_app/core/utils/app_router.dart';
 import 'package:bookl_app/core/utils/assets.dart';
 import 'package:bookl_app/core/utils/styels.dart';

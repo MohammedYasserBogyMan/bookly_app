@@ -1,4 +1,4 @@
-import 'package:bookl_app/Features/home/presention/view/widgets/feature_book_list_view.dart';
+import 'package:bookl_app/Features/home/presentation/view/widgets/feature_book_list_view.dart';
 import 'package:bookl_app/core/utils/styels.dart';
 import 'package:flutter/material.dart';
 import 'best_seller_list_view.dart';

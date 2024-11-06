@@ -1,6 +1,6 @@
-import 'package:bookl_app/Features/home/presention/view/widgets/book_action.dart';
-import 'package:bookl_app/Features/home/presention/view/widgets/book_details_section.dart';
-import 'package:bookl_app/Features/home/presention/view/widgets/similaer_book_section.dart';
+import 'package:bookl_app/Features/home/presentation/view/widgets/book_action.dart';
+import 'package:bookl_app/Features/home/presentation/view/widgets/book_details_section.dart';
+import 'package:bookl_app/Features/home/presentation/view/widgets/similaer_book_section.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_appbar_book_details.dart';
