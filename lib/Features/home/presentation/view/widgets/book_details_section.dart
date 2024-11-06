@@ -1,5 +1,6 @@
 import 'package:bookl_app/Features/home/presentation/view/widgets/bool_rating.dart';
 import 'package:bookl_app/Features/home/presentation/view/widgets/custom_list_view_item.dart';
+import 'package:bookl_app/core/utils/assets.dart';
 import 'package:bookl_app/core/utils/styels.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,9 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.18),
-          child: const FeaturedCustomListViewItem(),
+          child: const FeaturedCustomListViewItem(
+            imageUrl: AssetsData.imageTest,
+          ),
         ),
         const SizedBox(
           height: 43,

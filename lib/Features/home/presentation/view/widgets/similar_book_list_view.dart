@@ -1,4 +1,5 @@
 import 'package:bookl_app/Features/home/presentation/view/widgets/custom_list_view_item.dart';
+import 'package:bookl_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class SimilarBooksListView extends StatelessWidget {
@@ -15,7 +16,9 @@ class SimilarBooksListView extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: 5,
             ),
-            child: FeaturedCustomListViewItem(),
+            child: FeaturedCustomListViewItem(
+              imageUrl: AssetsData.imageTest,
+            ),
           );
         },
       ),
