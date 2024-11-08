@@ -1,6 +1,8 @@
 import 'package:bookl_app/Features/home/presentation/view_model/features_books_cubit/featured_books_cubit.dart';
+import 'package:bookl_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'custom_list_view_item.dart';
 
@@ -22,9 +24,15 @@ class FeaturedBookListView extends StatelessWidget {
                   padding: const EdgeInsets.only(
                     right: 14.0,
                   ),
-                  child: FeaturedCustomListViewItem(
-                    imageUrl:
-                        state.books[index].volumeInfo.imageLinks!.thumbnail,
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                          extra: state.books[index]);
+                    },
+                    child: FeaturedCustomListViewItem(
+                      imageUrl:
+                          state.books[index].volumeInfo.imageLinks!.thumbnail,
+                    ),
                   ),
                 );
               },

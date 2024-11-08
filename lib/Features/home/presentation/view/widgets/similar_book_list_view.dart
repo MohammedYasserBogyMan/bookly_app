@@ -1,8 +1,10 @@
 import 'package:bookl_app/Features/home/presentation/view/widgets/custom_list_view_item.dart';
 import 'package:bookl_app/Features/home/presentation/view_model/similer_books_cubit/similar_book_cubit.dart';
+import 'package:bookl_app/core/utils/app_router.dart';
 import 'package:bookl_app/core/widgets/custom_error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
@@ -15,17 +17,23 @@ class SimilarBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.27,
             child: ListView.builder(
-              itemCount: 5,
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 5,
                   ),
-                  child: FeaturedCustomListViewItem(
-                    imageUrl:
-                        state.books[index].volumeInfo.imageLinks?.thumbnail ??
-                            '',
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                          extra: state.books[index]);
+                    },
+                    child: FeaturedCustomListViewItem(
+                      imageUrl:
+                          state.books[index].volumeInfo.imageLinks?.thumbnail ??
+                              '',
+                    ),
                   ),
                 );
               },
