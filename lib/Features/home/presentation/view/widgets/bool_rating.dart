@@ -32,7 +32,7 @@ class BookRating extends StatelessWidget {
           width: 5,
         ),
         Text(
-          '($count.toString())',
+          '($count)',
           style: Styels.textStyel14,
         ),
       ],
