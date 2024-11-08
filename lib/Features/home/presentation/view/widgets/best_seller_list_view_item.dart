@@ -1,18 +1,18 @@
+import 'package:bookl_app/Features/home/data/models/book_model/book_model.dart';
 import 'package:bookl_app/Features/home/presentation/view/widgets/bool_rating.dart';
 import 'package:bookl_app/core/utils/app_router.dart';
-import 'package:bookl_app/core/utils/assets.dart';
 import 'package:bookl_app/core/utils/styels.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BooksListViewItem extends StatelessWidget {
-  const BooksListViewItem({super.key});
-
+  const BooksListViewItem({super.key, required this.books});
+  final BookModel books;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+        GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: books);
       },
       child: Row(
         children: [
@@ -23,10 +23,10 @@ class BooksListViewItem extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  image: const DecorationImage(
+                  image: DecorationImage(
                     fit: BoxFit.fill,
                     image: NetworkImage(
-                      AssetsData.imageTest,
+                      books.volumeInfo.imageLinks!.thumbnail,
                     ),
                   ),
                 ),
@@ -42,20 +42,27 @@ class BooksListViewItem extends StatelessWidget {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
-                  child: const Text(
-                    'Harry Potter and the Goblet of Fire',
+                  child: Text(
+                    books.volumeInfo.title,
                     style: Styels.textStyel20,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                const Text('J.K. Rowling', style: Styels.textStyel14),
-                const Row(
+                Text(
+                    books.volumeInfo.authors.isNotEmpty
+                        ? books.volumeInfo.authors.first
+                        : 'Unknown',
+                    style: Styels.textStyel14),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('200\$', style: Styels.textStyel20),
-                    BookRating(),
+                    const Text('Free', style: Styels.textStyel20),
+                    BookRating(
+                      rating: books.volumeInfo.rating ?? 0,
+                      count: books.volumeInfo.pageCount ?? 0,
+                    ),
                   ],
                 ),
               ],

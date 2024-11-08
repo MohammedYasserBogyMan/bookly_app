@@ -1,73 +1,105 @@
+import 'package:bookl_app/Features/home/data/models/book_model/image_links.dart';
+import 'package:bookl_app/Features/home/data/models/book_model/industry_identifier.dart';
+import 'package:bookl_app/Features/home/data/models/book_model/panelization_summary.dart';
+import 'package:bookl_app/Features/home/data/models/book_model/reading_modes.dart';
 import 'package:equatable/equatable.dart';
 
-import 'image_links.dart';
-import 'industry_identifier.dart';
-import 'panelization_summary.dart';
-import 'reading_modes.dart';
-
 class VolumeInfo extends Equatable {
-  final String? title;
-  final String? publishedDate;
-  final List<IndustryIdentifier>? industryIdentifiers;
-  final ReadingModes? readingModes;
-  final int? pageCount;
-  final String? printType;
-  final String? maturityRating;
-  final bool? allowAnonLogging;
-  final String? contentVersion;
-  final PanelizationSummary? panelizationSummary;
-  final ImageLinks imageLinks;
-  final String? language;
-  final String? previewLink;
-  final String? infoLink;
-  final String? canonicalVolumeLink;
+  final String title;
+  final double? rating;
+  final List<String> authors;
+  final String publishedDate;
+  final String language;
+  final String previewLink;
+  final String infoLink;
+  final String imageUrl;
+  final String maturityRating;
+  final String contentVersion;
+  final bool allowAnonLogging;
+  final String? saleCountry;
+  final String? buyLink;
+  final bool isEbook;
+  final String? webReaderLink;
+  final List<IndustryIdentifier>? industryIdentifiers; // Added missing field
+  final ReadingModes? readingModes; // Added missing field
+  final int? pageCount; // Added missing field
+  final String? printType; // Added missing field
+  final PanelizationSummary? panelizationSummary; // Added missing field
+  final ImageLinks? imageLinks; // Added missing field
+  final String? canonicalVolumeLink; // Added missing field
+  final List<String>? categories; // Added missing field
 
   const VolumeInfo({
-    this.title,
-    this.publishedDate,
+    required this.rating,
+    required this.title,
+    required this.authors,
+    required this.publishedDate,
+    required this.language,
+    required this.previewLink,
+    required this.infoLink,
+    required this.imageUrl,
+    required this.maturityRating,
+    required this.contentVersion,
+    required this.allowAnonLogging,
+    this.saleCountry,
+    this.buyLink,
+    required this.isEbook,
+    this.webReaderLink,
     this.industryIdentifiers,
     this.readingModes,
     this.pageCount,
     this.printType,
-    this.maturityRating,
-    this.allowAnonLogging,
-    this.contentVersion,
     this.panelizationSummary,
-    required this.imageLinks,
-    this.language,
-    this.previewLink,
-    this.infoLink,
+    this.imageLinks,
     this.canonicalVolumeLink,
+    this.categories,
   });
 
-  factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
-        title: json['title'] as String?,
-        publishedDate: json['publishedDate'] as String?,
-        industryIdentifiers: (json['industryIdentifiers'] as List<dynamic>?)
-            ?.map((e) => IndustryIdentifier.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        readingModes: json['readingModes'] == null
-            ? null
-            : ReadingModes.fromJson(
-                json['readingModes'] as Map<String, dynamic>),
-        pageCount: json['pageCount'] as int?,
-        printType: json['printType'] as String?,
-        maturityRating: json['maturityRating'] as String?,
-        allowAnonLogging: json['allowAnonLogging'] as bool?,
-        contentVersion: json['contentVersion'] as String?,
-        panelizationSummary: json['panelizationSummary'] == null
-            ? null
-            : PanelizationSummary.fromJson(
-                json['panelizationSummary'] as Map<String, dynamic>),
-        imageLinks:
-            ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
-        language: json['language'] as String?,
-        previewLink: json['previewLink'] as String?,
-        infoLink: json['infoLink'] as String?,
-        canonicalVolumeLink: json['canonicalVolumeLink'] as String?,
-      );
+  factory VolumeInfo.fromJson(Map<String, dynamic> json) {
+    return VolumeInfo(
+      rating: json['averageRating'] != null
+          ? (json['averageRating'] as num).toDouble()
+          : null,
+      title: json['title'] ?? '',
+      authors:
+          json['authors'] != null ? List<String>.from(json['authors']) : [],
+      publishedDate: json['publishedDate'] ?? '',
+      language: json['language'] ?? '',
+      previewLink: json['previewLink'] ?? '',
+      infoLink: json['infoLink'] ?? '',
+      imageUrl: json['imageLinks']?['thumbnail'] ?? '',
+      maturityRating: json['maturityRating'] ?? 'NOT_MATURE',
+      contentVersion: json['contentVersion'] ?? '',
+      allowAnonLogging: json['allowAnonLogging'] ?? false,
+      saleCountry: json['saleInfo']?['country'],
+      buyLink: json['saleInfo']?['buyLink'],
+      isEbook: json['saleInfo']?['isEbook'] ?? false,
+      webReaderLink: json['accessInfo']?['webReaderLink'],
+      industryIdentifiers: json['industryIdentifiers'] != null
+          ? List<IndustryIdentifier>.from(json['industryIdentifiers']
+              .map((x) => IndustryIdentifier.fromJson(x)))
+          : null,
+      readingModes: json['readingModes'] != null
+          ? ReadingModes.fromJson(json['readingModes'])
+          : null,
+      pageCount: json['pageCount'],
+      printType: json['printType'],
+      panelizationSummary: json['panelizationSummary'] != null
+          ? PanelizationSummary.fromJson(json['panelizationSummary'])
+          : null,
+      imageLinks: json['imageLinks'] != null
+          ? ImageLinks.fromJson(json['imageLinks'])
+          : null,
+      canonicalVolumeLink: json['canonicalVolumeLink'],
+      categories: json['categories'] != null
+          ? List<String>.from(json['categories'])
+          : null,
+    );
+  }
 
   Map<String, dynamic> toJson() => {
+        'averageRating': rating,
+        'authors': authors,
         'title': title,
         'publishedDate': publishedDate,
         'industryIdentifiers':
@@ -79,16 +111,19 @@ class VolumeInfo extends Equatable {
         'allowAnonLogging': allowAnonLogging,
         'contentVersion': contentVersion,
         'panelizationSummary': panelizationSummary?.toJson(),
-        'imageLinks': imageLinks.toJson(),
+        'imageLinks': imageLinks?.toJson(),
         'language': language,
         'previewLink': previewLink,
         'infoLink': infoLink,
         'canonicalVolumeLink': canonicalVolumeLink,
+        'categories': categories,
       };
 
   @override
   List<Object?> get props {
     return [
+      rating,
+      authors,
       title,
       publishedDate,
       industryIdentifiers,
@@ -104,6 +139,7 @@ class VolumeInfo extends Equatable {
       previewLink,
       infoLink,
       canonicalVolumeLink,
+      categories,
     ];
   }
 }
