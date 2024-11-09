@@ -28,7 +28,7 @@ class BookDetailsViewBody extends StatelessWidget {
                     const SizedBox(
                       height: 30, // مسافة بين العناصر
                     ),
-                    const BookAction(),
+                     BookAction(bookModel: bookModel,),
                     const SimilaerBookSection(),
                     const SizedBox(
                       height: 5,
