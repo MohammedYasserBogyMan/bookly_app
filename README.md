@@ -78,20 +78,7 @@
 
 ### 📱 App Screenshots
 
-> **Note**: Add your app screenshots here by replacing the placeholder paths below:
 
-| Home Screen                   | Book Details                        | Search Results                    |
-| ----------------------------- | ----------------------------------- | --------------------------------- |
-| ![Home](screenshots/home.png) | ![Details](screenshots/details.png) | ![Search](screenshots/search.png) |
-
-### 🎬 Live Demo
-
-- **🌐 Web Demo**: [Launch Bookly Web App](https://your-demo-url.com) _(Replace with your deployed web version)_
-- **📱 Mobile APK**: [Download Android APK](https://github.com/yourusername/bookly_app/releases) _(Replace with your release link)_
-
-### 🎥 Demo Video
-
-> **Coming Soon**: Demo video showcasing key features and user interactions
 
 ---
 
